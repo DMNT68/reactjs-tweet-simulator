@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import Menu from './components/Menu';
+import Modal from './components/Modal';
+import FormAddTweet from './components/FormAddTweet';
+import TweetList from './components/TweetList';
+
+// Redux
+import store from './store';
+import { Provider } from 'react-redux';
+
+export default function App() {
+	return (
+		<Provider store={store}>
+			<Menu />
+			<Container className="mt-5">
+				<h1 className="text-center">TWEETS</h1>
+				<TweetList />
+			</Container>
+			<Modal>
+				<FormAddTweet />
+			</Modal>
+		</Provider>
+	);
 }
-
-export default App;
